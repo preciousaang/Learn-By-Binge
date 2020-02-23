@@ -14,3 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::middleware('auth')->group(function(){
+    Route::get('dashboard', 'User\UsersController@dashboard')->name('dashboard');
+    Route::get('logout', 'User\LoginController@logout')->name('logout');
+});
+
+
+Route::get('login', 'User\LoginController@form')->name('login');
+Route::post('login', 'User\LoginController@login')->name('login-user');
