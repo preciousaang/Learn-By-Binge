@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('homepage');
 
 Route::middleware('auth')->group(function(){
     Route::get('dashboard', 'User\UsersController@dashboard')->name('dashboard');
