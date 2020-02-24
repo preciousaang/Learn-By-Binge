@@ -3,8 +3,8 @@
 @section('content')
     <div class="main">
         <div class="row gutters">
-            <div style="" class="col col-3">
-                @include('users.sidebar')
+            <div class="col col-3">
+                @include('layouts.admin-sidebar')
             </div>
             <div class="col col-9">
 

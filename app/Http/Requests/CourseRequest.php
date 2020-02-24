@@ -45,6 +45,10 @@ class CourseRequest extends FormRequest
             ],
             'description'=>[
                 'required',
+            ],
+            'price'=>[
+                'required',
+                'numeric'
             ]
         ];
     }

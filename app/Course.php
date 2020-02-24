@@ -11,7 +11,8 @@ class Course extends Model
         'title',
         'user_id',
         'description',
-        'image'
+        'image',
+        'price'
     ];
 
 

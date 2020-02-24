@@ -4,7 +4,7 @@
     <div class="main">
         <div class="row gutters">
             <div style="" class="col col-4">
-                @include('users.sidebar')
+                @include('layouts.admin-sidebar')
             </div>
             <div class="col col-8">
                 <fieldset>
@@ -27,6 +27,10 @@
                         <div class="form-item">
                             <label>Course Title @if($errors->has('title')) <span class="error">@foreach($errors->get('title') as $message){{$message}} @endforeach</span> @endif</label>
                             <input type="text" @if($errors->has('title')) class="error" @endif name="title" value="{{old('title')}}">
+                        </div>
+                        <div class="form-item">
+                            <label>Course Price(in Dollars) @if($errors->has('price')) <span class="error">@foreach($errors->get('price') as $message){{$message}} @endforeach</span> @endif</label>
+                            <input type="text" @if($errors->has('price')) class="error" @endif name="price" value="{{old('price')}}">
                         </div>
                         <div class="form-item">
                             <label>Description @if($errors->has('description')) <span class="error">@foreach($errors->get('description') as $message) {{$message}} @endforeach @endif</label>

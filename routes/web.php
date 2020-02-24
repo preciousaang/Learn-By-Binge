@@ -23,3 +23,6 @@ Route::middleware('auth')->group(function(){
 
 Route::get('login', 'User\LoginController@form')->name('login');
 Route::post('login', 'User\LoginController@login')->name('login-user');
+Route::get('register', 'User\RegisterController@form')->name('register');
+Route::post('register', 'User\RegisterController@register')->name('register-user');
+

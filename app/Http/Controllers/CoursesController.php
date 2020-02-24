@@ -24,11 +24,19 @@ class CoursesController extends Controller
             'category_id'=>$request->input('category'),
             'description'=>$request->input('description'),
             'image'=>$imgPath,
+            'price'=>$request->input('price'),
             'user_id'=>auth()->user()->id
         ]);
         if($newCourse){
             return redirect()->route('create-course')->with('success', 'Course Added Successfully!');
         }
 
+    }
+
+    public function index(){
+        $courses = auth()->user()->courses()->orderBy('created_at', 'desc')->paginate(30);
+        return view('courses.index', [
+            'courses'=>$courses,
+        ]);
     }
 }
