@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class CourseRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class CourseRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +25,27 @@ class CourseRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title'=>[
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('courses')->where(function($query){
+                    return $query->where('user_id', auth()->user()->id);
+                }),
+            ],
+            'category'=>[
+                'required',
+                'integer',
+                'exists:categories,id'
+            ],
+            'image'=>[
+                'required',
+                'image',
+                'max:4096'
+            ],
+            'description'=>[
+                'required',
+            ]
         ];
     }
 }
