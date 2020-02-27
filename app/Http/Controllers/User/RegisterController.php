@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use App\User;
+use App\Events\UserRegistered;
 
 class RegisterController extends Controller
 {
@@ -23,6 +24,7 @@ class RegisterController extends Controller
             'email' => $request->input('email')
         ]);
         if($newUser){
+            event(new UserRegistered($newUser));
             return redirect()->route('login')->with('success', 'Registration Successful! Login.');
         }
     }

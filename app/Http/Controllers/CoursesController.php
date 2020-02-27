@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\CourseRequest;
+use App\Http\Requests\UpdateCourseRequest;
 
 use App\Category;
 use App\Course;
@@ -28,7 +29,7 @@ class CoursesController extends Controller
             'user_id'=>auth()->user()->id
         ]);
         if($newCourse){
-            return redirect()->route('create-course')->with('success', 'Course Added Successfully!');
+            return redirect()->route('tutor-course-files', $newCourse->id)->with('success', 'Course Added Successfully!');
         }
 
     }
@@ -38,5 +39,27 @@ class CoursesController extends Controller
         return view('courses.index', [
             'courses'=>$courses,
         ]);
+    }
+
+    public function edit(Request $request){
+        $course = Course::findOrFail($request->id);
+        $categories = Category::orderBy('title', 'asc')->get();
+
+
+        return view('courses.edit', [
+            'categories'=>$categories,
+            'course'=>$course,
+        ]);
+    }
+
+    public function update(UpdateCourseRequest $request){
+        $course = Course::findOrFail($request->id);
+        $course->title = $request->input('title');
+        $course->description = $request->input('description');
+        $course->price = $request->input('price');
+        $course->category_id = $request->input('category');
+        if($course->save()){
+            return redirect()->back()->with('success', 'Course Updated Successfully');
+        }
     }
 }

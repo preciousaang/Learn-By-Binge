@@ -15,6 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 })->name('homepage');
 
+Route::get('/mailable', function(){
+    $user = App\User::find(1);
+
+    return new App\Mail\UserRegistered($user);
+});
+
 Route::middleware('auth')->group(function(){
     Route::get('dashboard', 'User\UsersController@dashboard')->name('dashboard');
     Route::get('logout', 'User\LoginController@logout')->name('logout');

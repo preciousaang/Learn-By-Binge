@@ -19,4 +19,8 @@ class Course extends Model
     public function category(){
         return $this->belongsTo('App\Category');
     }
+
+    public function files(){
+        return $this->hasMany('App\File');
+    }
 }
