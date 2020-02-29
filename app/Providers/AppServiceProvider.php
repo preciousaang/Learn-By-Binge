@@ -4,6 +4,10 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use App\Course;
+use App\File;
+use App\Observers\CourseObserver;
+use App\Observers\FileObserver;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,6 +19,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(255);
+        Course::observe(CourseObserver::class);
+        File::observe(FileObserver::class);
     }
 
     /**

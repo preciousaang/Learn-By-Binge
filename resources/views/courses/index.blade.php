@@ -9,6 +9,7 @@
         <div class="col col-8">
             <fieldset>
                 <legend><h4>My Courses</h4></legend>
+                @include('partials.partials')
                 <table class="striped bordered">
                     <thead>
                         <tr>
@@ -27,14 +28,14 @@
                             <td><p>{{$course->category->title}}</p></td>
                             <td><p>{{$course->files()->count()}}</p></td>
                             <td>${{$course->price}}</td>
-                            <td>{{$course->created_at->diffForHumans()}}</td>
+                            <td>{{date('d-m-Y', strtotime($course->created_at))}}</td>
                             <td>
                                 <button data-target="#my-dropdown-{{$course->id}}" data-component="dropdown" class="button outline secondary">Select Action <span class="caret down"></span></button>
                                 <div id="my-dropdown-{{$course->id}}" class="dropdown hide">
                                     <ul>
                                         <li><a href="{{route('tutor-course-files', $course->id)}}">View Course Files</a></li>
                                         <li><a href="{{route('edit-course', $course->id)}}">Update Course</a></li>
-                                        <li><a href="">Delete Course</a></li>
+                                        <li><a onclick="return confirm('Are you sure?')" href="{{route('delete-course', $course->id)}}">Delete Course</a></li>
                                     </ul>
                                 </div>
                             </td>

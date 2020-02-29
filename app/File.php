@@ -15,10 +15,15 @@ class File extends Model
 
 
 
+    public function course(){
+        return $this->belongsTo('App\Course');
+    }
 
 
 
 
 
-    //TODO: Add an event listener to delete files on model deletion
+
+
+
 }

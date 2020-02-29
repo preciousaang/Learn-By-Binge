@@ -37,6 +37,12 @@ class FilesController extends Controller
             'src'=>basename($request->file('src')->store('public/course-files')),
             'type'=>$type
         ]);
-        return redirect()->route('tutor-course-files', $course->id);
+        return redirect()->route('tutor-course-files', $course->id)->with('success', 'File added successfully!');
+    }
+
+    public function delete(Request $request){
+        $file = File::findOrFail($request->id);
+        $file->delete();
+        return redirect()->route('tutor-course-files', $file->course->id)->with('message', 'File Deleted Successfully');
     }
 }

@@ -24,6 +24,9 @@ Route::get('/mailable', function(){
 Route::middleware('auth')->group(function(){
     Route::get('dashboard', 'User\UsersController@dashboard')->name('dashboard');
     Route::get('logout', 'User\LoginController@logout')->name('logout');
+
+    //Files Route
+    Route::get('file/{id}/delete', 'FilesController@delete')->name('delete-file');
 });
 
 

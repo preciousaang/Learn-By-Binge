@@ -62,4 +62,10 @@ class CoursesController extends Controller
             return redirect()->back()->with('success', 'Course Updated Successfully');
         }
     }
+
+    public function delete(Request $request){
+        $course = Course::findOrFail($request->id);
+        $course->delete();
+        return redirect()->route('courses')->with('message', 'Courses Deleted Successfully');
+    }
 }
