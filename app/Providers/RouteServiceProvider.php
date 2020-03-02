@@ -64,6 +64,13 @@ class RouteServiceProvider extends ServiceProvider
             ->group(base_path('routes/courses.php'));
     }
 
+    public function mapStudentRoutes(){
+        Route::prefix('student')
+            ->middleware('student')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/students.php'));
+    }
+
     /**
      * Define the "api" routes for the application.
      *

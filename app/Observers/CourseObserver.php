@@ -71,6 +71,7 @@ class CourseObserver
      */
 
      public function deleting(Course $course){
+        Storage::delete('public/course_images/'.$course->image);
         $collection = collect($course->files);
         $src = $collection->map(function($item, $key){return 'public/course-files/'. $item->src;});
 

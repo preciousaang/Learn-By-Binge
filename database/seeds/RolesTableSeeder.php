@@ -19,15 +19,10 @@ class RolesTableSeeder extends Seeder
                 'description'=>'The one with most rights.'
             ],
             [
-                'title'=>'inst',
-                'full_name'=>'Instructor',
+                'title'=>'tut',
+                'full_name'=>'Tutor',
                 'description'=>'A teacher of courses.'
             ],
-            [
-                'title'=>'stud',
-                'full_name'=>'Student',
-                'description'=>'A student and learner of courses.'
-            ]
         ]);
     }
 }

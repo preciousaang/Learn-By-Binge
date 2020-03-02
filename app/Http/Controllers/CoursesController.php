@@ -66,6 +66,6 @@ class CoursesController extends Controller
     public function delete(Request $request){
         $course = Course::findOrFail($request->id);
         $course->delete();
-        return redirect()->route('courses')->with('message', 'Courses Deleted Successfully');
+        return redirect()->route('courses')->with('message', 'Course Deleted Successfully');
     }
 }

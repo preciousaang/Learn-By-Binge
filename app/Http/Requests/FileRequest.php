@@ -25,7 +25,7 @@ class FileRequest extends FormRequest
     {
         return [
             'name'=>'bail|required|string|max:191',
-            'src'=>'required|file'
+            'src'=>'required|file|max:4096'
         ];
     }
 }
