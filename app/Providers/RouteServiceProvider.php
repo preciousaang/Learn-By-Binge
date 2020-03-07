@@ -38,6 +38,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapApiRoutes();
 
         $this->mapWebRoutes();
+        $this->mapStudentRoutes();
         $this->mapCoursesRoutes();
 
         //
@@ -66,9 +67,9 @@ class RouteServiceProvider extends ServiceProvider
 
     public function mapStudentRoutes(){
         Route::prefix('student')
-            ->middleware('student')
+            ->middleware('web')
             ->namespace($this->namespace)
-            ->group(base_path('routes/students.php'));
+            ->group(base_path('routes/student.php'));
     }
 
     /**

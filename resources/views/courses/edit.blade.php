@@ -39,14 +39,14 @@
                             <textarea style="resize: none;" name="description" @if($errors->has('description')) class="error" @endif rows="12">{{$course->description}}</textarea>
                         </div>
                         <div class="form-item">
-                            <img style="width: 50%; border-radius: 5px;" src="{{asset('storage/course_images/'.$course->image)}}">
+                            <img style="width: 50%; border-radius: 5px;" src="{{asset(config('paths.course_images').$course->image)}}">
                         </div>
                         <div class="form-item">
                             <label>Image @if($errors->has('image')) <span class="error">@foreach($errors->get('image') as $message){{$message}} @endforeach @endif</label>
                             <input type="file" accept="image/*" name="image">
                         </div>
                         <div class="form-item">
-                            <button class="button secondary outline" type="submit">Create Course</button>
+                            <button class="button secondary outline" type="submit">Update Course</button>
                         </div>
                     </form>
                 </fieldset>

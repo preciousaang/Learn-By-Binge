@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('homepage');
+Route::get('/','FrontendController@index')->name('homepage');
 
 Route::get('/mailable', function(){
     $user = App\User::find(1);
