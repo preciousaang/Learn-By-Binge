@@ -18,6 +18,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if(!session()->has('cart')){
+            $cart = [];
+            session(['cart'=>$cart]);
+        }
         Schema::defaultStringLength(255);
         Course::observe(CourseObserver::class);
         File::observe(FileObserver::class);

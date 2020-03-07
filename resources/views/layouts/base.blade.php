@@ -62,7 +62,7 @@
 
         </div>
         <div style="padding: 5px;" class="dropdown hide" id="cart-dropdown">
-            <ul>
+            <ul id="cart-items">
                 <li><a href="#">Cart Content</a></li>
             </ul>
             <hr>
@@ -71,7 +71,7 @@
                     <a style="display: flex; box-shadow: 3px 1px 0 #ccc; justify-content: center" href="#" class="button w100 secondary">Checkout <i class="fa fa-sign-out"></i></a>
                 </div>
             </div>
-            
+
 
         </div>
             </header>
@@ -80,6 +80,7 @@
 
         <script src="{{asset('js/jquery.min.js')}}"></script>
         <script src="{{asset('js/kube.min.js')}}"></script>
+        @include('scripts.cart-script')
         @section('js')
         @show
     </body>

@@ -34,7 +34,7 @@
                                     {{substr($course->description, 0, 100).__('...')}}
                                 </figcaption>
                                 <figcaption>
-                                <button id="{{$course->id}}" style="box-shadow: 3px 1px 0 #ccc;" class="course button w100 secondary outline"><i class="fa fa-cart-plus"></i>&nbsp; Add To Cart</button>
+                                <button course="{'id': {{$course->id}}, 'title': '{{$course->title}}', 'price': '{{$course->price}}'}" id="{{$course->id}}" style="box-shadow: 3px 1px 0 #ccc;" class="course button w100 secondary outline"><i class="fa fa-cart-plus"></i>&nbsp; Add To Cart</button>
                                 </figcaption>
                             </figure>
                         </div>
@@ -52,8 +52,12 @@
 <script>
 $(document).ready(function(){
     $('.course').click(function(){
-        
-
+        $.post('{{route('add-to-cart')}}', {
+            'id': $(this).attr('id'),
+            '_token': '{{csrf_token()}}'
+        }, function(data, status){
+            console.log(data, status);
+        });
     });
 });
 </script>
