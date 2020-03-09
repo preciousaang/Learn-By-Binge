@@ -63,7 +63,6 @@
         </div>
         <div style="padding: 5px;" class="dropdown hide" id="cart-dropdown">
             <ul id="cart-items">
-                <li><a href="#">Cart Content</a></li>
             </ul>
             <hr>
             <div class="row">

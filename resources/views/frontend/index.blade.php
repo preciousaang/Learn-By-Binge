@@ -56,7 +56,8 @@ $(document).ready(function(){
             'id': $(this).attr('id'),
             '_token': '{{csrf_token()}}'
         }, function(data, status){
-            console.log(data, status);
+            clearCart();
+            loadCart();
         });
     });
 });

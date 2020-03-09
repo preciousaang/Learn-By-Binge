@@ -36,10 +36,10 @@ class CartController extends Controller
                 foreach($cartItems as $key => $val){
                     if($course->id == $key){
                         // check if theres any quantity
-                        // if(empty($cartItems[$key]["quantity"])){
-                        //     //if there's none initilize as 0 to avoid integer error
-                        //     $cartItems[$key]["quantity"] = 0;
-                        // }
+                        if(empty($cartItems[$key]["quantity"])){
+                            //if there's none initilize as 0 to avoid integer error
+                            $cartItems[$key]["quantity"] = 0;
+                        }
                         $cartItems[$key]['quantity'] += 1;
                     }
                 }
@@ -52,12 +52,13 @@ class CartController extends Controller
             //Finally throw it in the cart
             session(['cart'=>$cartItems]);
         }else{
+            //The cart is empty so just throw in the items into it
             session(['cart'=>$itemArray]);
         }
 
 
         // $request->session()->push('cart.'.$request->post('id'), $request->post('id'));
-        return response()->json("Ok", 200);
+        return response()->json(null, 200);
     }
 
     public function index(Request $request){
