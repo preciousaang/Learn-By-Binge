@@ -19,6 +19,6 @@ class TestController extends Controller
     }
 
     public function getCart(Cart $cart){
-        return response()->json($cart, 200);
+        return response()->json($cart->list(), 200);
     }
 }

@@ -8,14 +8,14 @@ use App\Tools\Cart;
 
 class CartController extends Controller
 {
-    public function list(Request $request){
-        $cart = $request->session()->get('cart');
-        return response()->json($cart, 200);
+    public function list(Request $request, Cart $cart){
+        $items = $cart->list();
+        return response()->json($items, 200);
     }
 
     public function add(Request $request, Cart $cart){
         $request->validate([
-            'id' => 'required'
+            'id' => 'required|exists:courses'
         ]);
 
         $course = Course::find($request->post('id'));
