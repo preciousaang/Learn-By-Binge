@@ -2,7 +2,7 @@
 namespace App\Tools;
 
 class Cart{
-    public $items = [];
+    private $items = [];
 
     public function __construct(){
         $this->items = session()->get('cart');
