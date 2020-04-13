@@ -27,9 +27,10 @@ class Cart{
                 }
             } else {
                 //it isn't in the cart yet
-                $this->cartItems = $this->cartItems + $itemArray;
+                $this->items = $this->items + $itemArray;
             }
             //Finally put the item in the cart
+            session(['cart'=>$this->items]);
         }else{
             //the cart is empty so just throw the items into it
             session(['cart'=>$itemArray]);
