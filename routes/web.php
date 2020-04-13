@@ -36,3 +36,5 @@ Route::post('register', 'User\RegisterController@register')->name('register-user
 Route::get('cart', 'CartController@list')->name('cart-list');
 Route::post('add-course-to-cart', 'CartController@add')->name('add-to-cart');
 
+Route::get('test/index', 'TestController@getIndex');
+Route::get('test/cart', 'TestController@getCart');
